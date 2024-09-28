@@ -1,0 +1,15 @@
+// Time complexity: O(nlogn) - 1 element insertion into heap is log n
+// Space complexity: O(n) 
+// Explanation: Using priority_queue (built on top of the max heap)
+//		*note: initial case where prefixSum = 0 at index -1 
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int> pq(nums.begin(), nums.end());
+        for (int i = 0; i < k - 1; i++) {
+            pq.pop();
+        }
+        return pq.top();
+    }
+};
