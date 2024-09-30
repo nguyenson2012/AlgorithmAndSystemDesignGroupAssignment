@@ -1,7 +1,11 @@
 // Time complexity: O(nlogn) - 1 element insertion into heap is log n
 // Space complexity: O(n) 
 // Explanation: Using priority_queue (built on top of the max heap)
+<<<<<<< HEAD
 //		
+=======
+
+>>>>>>> 984e867d74654f4f3d11443740c2cdb345a31c91
 
 class Solution {
 public:
