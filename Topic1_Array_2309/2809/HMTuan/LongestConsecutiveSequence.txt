@@ -1,0 +1,31 @@
+// Time complexity: O(n) - n + n = time of pushing element into set + time to handle task 
+// Space complexity: O(n) 
+// Explanation: Using Set to store the element of array
+//		Iterate through array, If set do not contains currNum -1 -> currNum is not the start of ConSeq
+// 		Otherwise, while loop until the next element (currNum + 1) is contained or not 
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        // if(nums.length == 0) return 0;
+        Set<Integer> s = new HashSet<>();
+        for(int num : nums)
+            s.add(num);
+        
+        int longestConSeq = 0;
+        for(int num : nums){
+            // if set do not contains num - 1 -> num is start number
+            if(!s.contains(num-1)){
+                int currNum = num;
+                int currConSeq = 1;
+
+                // if the next element is in the set -> increase currConSeq and currNum
+                while(s.contains(currNum+1)){
+                    ++currConSeq;
+                    ++currNum;
+                }
+                longestConSeq = Math.max(longestConSeq, currConSeq);
+            }
+        }
+        return longestConSeq;
+    }
+}
