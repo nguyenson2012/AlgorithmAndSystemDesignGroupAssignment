@@ -1,0 +1,27 @@
+// Time complexity: O(nlogn + n) - time of sorting + time of iterating
+// Space complexity: O(1) 
+// Explanation: Using Greedy algo for ascending-sorted array (where the left is min, right is max)
+//		Play min token (left) whenever possible 
+
+class Solution {
+    public int bagOfTokensScore(int[] tokens, int power) {
+        int scr = 0, maxScr = 0;
+        Arrays.sort(tokens);
+        int l = 0, r = tokens.length -1;
+        while(l <= r){
+            if(power >= tokens[l]){
+                power -= tokens[l];
+                scr++;
+                maxScr = Math.max(scr, maxScr);
+                ++l;
+            }else if(scr >= 1){
+                power += tokens[r];
+                scr--;
+                --r;
+            }else{
+                ++l;
+            }
+        }
+        return maxScr;       
+    }
+}
